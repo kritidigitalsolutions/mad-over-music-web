@@ -33,7 +33,10 @@ import {
   TrendingUp,
   Users,
   WalletCards,
-  X
+  X,
+  Zap,
+  CheckCircle2,
+  Award
 } from 'lucide-react';
 import './styles.css';
 
@@ -115,34 +118,58 @@ const visionItems = [
 
 const legalPoints = [
   {
-    title: 'Structured Legal & Business Framework',
-    desc: 'Operating under established corporate governance and entertainment compliance standards.',
-    Icon: FileCheck2
+    num: '01',
+    badge: 'Corporate Governance',
+    title: 'Structured Legal & Corporate Framework',
+    desc: 'Operating under established corporate governance, statutory entertainment laws, and standardized business contracts.',
+    highlights: ['Standardized Legal Contracts', 'Corporate Governance Standards'],
+    Icon: FileCheck2,
+    tag: 'Govt. Standards'
   },
   {
+    num: '02',
+    badge: 'Creator Rights',
     title: 'Artist Rights & IP Protection',
-    desc: 'Clear intellectual property ownership ensuring creators retain full legal rights to their work.',
-    Icon: Scale
+    desc: 'Full intellectual property safeguards ensuring artists retain 100% of their core rights, sync licensing, and master ownership.',
+    highlights: ['100% Retained IP Rights', 'Zero-Exploitation Escrow'],
+    Icon: Scale,
+    tag: '100% Retained IP'
   },
   {
+    num: '03',
+    badge: 'Statutory Standard',
     title: 'Regulatory & Statutory Compliance',
-    desc: 'Full alignment with national digital media, copyright, and e-commerce compliance guidelines.',
-    Icon: BadgeCheck
+    desc: 'Strict alignment with Indian digital media guidelines, copyright statutory provisions, and e-commerce compliance.',
+    highlights: ['MeitY / STPI Framework Alignment', 'Digital Media Compliance'],
+    Icon: BadgeCheck,
+    tag: 'Statutory Compliant'
   },
   {
+    num: '04',
+    badge: 'Polygon Ledger',
     title: 'Blockchain-Supported Audit Trails',
-    desc: 'Immutable on-chain records for licensing, digital asset provenance, and royalty distribution.',
-    Icon: Blocks
+    desc: 'Immutable on-chain smart contracts executing real-time digital asset provenance, automated splits, and instant audit trails.',
+    highlights: ['Polygon Smart Contract Splits', '100% Immutable Public Ledger'],
+    Icon: Blocks,
+    tag: 'Polygon zkEVM Audit'
   },
   {
+    num: '05',
+    badge: 'Zero Blindspots',
     title: 'Transparent Platform Policies',
-    desc: 'Clear, ethical revenue-split agreements and partner contracts with zero hidden clauses.',
-    Icon: ShieldCheck
+    desc: 'Crystal-clear revenue-split agreements and franchise agreements with verified zero hidden deductions or blindspots.',
+    highlights: ['Transparent 50:50 Revenue Splits', 'Zero Hidden Operational Clauses'],
+    Icon: ShieldCheck,
+    tag: '100% Audit Trail'
   },
   {
+    num: '06',
+    badge: 'Bank-Grade Escrow',
     title: 'Secure Digital Ecosystem',
-    desc: 'Bank-grade access controls and encrypted infrastructure protecting user data and assets.',
-    Icon: LockKeyhole
+    desc: 'Bank-grade encrypted infrastructure, secure asset escrows, and enterprise access controls safeguarding user data and funds.',
+    highlights: ['256-Bit Encrypted Data Rails', 'Automated Smart Escrow Protection'],
+    Icon: LockKeyhole,
+    tag: 'Bank-Grade Security'
   }
 ];
 
@@ -587,25 +614,89 @@ function VisionMission() {
 }
 
 function LegalFoundation() {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
   return (
-    <section className="legal section-ivory" id="legal">
+    <section className="legal section-white" id="legal">
       <div className="container">
-        <SectionHeading
-          eyebrow="Legal Foundation & Trust"
-          title="Building MOM on a rock-solid foundation"
-        >
-          A secure, sustainable music ecosystem built on creator rights, transparent policy, and regulatory compliance.
-        </SectionHeading>
+        <div className="legal-header" data-reveal>
+          <p className="eyebrow">Legal Foundation & Trust</p>
+          <h2>Building MOM on a rock-solid foundation</h2>
+          <p className="legal-sub">
+            A secure, sustainable music ecosystem built on creator rights, transparent policy, and regulatory compliance.
+          </p>
+        </div>
+
+        {/* 6-Card Sharp Bento Grid */}
         <div className="legal-grid">
-          {legalPoints.map(({ title, desc, Icon }) => (
-            <article className="legal-card" key={title} data-reveal>
-              <div className="legal-card-icon" aria-hidden="true">
-                <Icon size={22} />
-              </div>
-              <h3>{title}</h3>
-              <p>{desc}</p>
-            </article>
-          ))}
+          {legalPoints.map((item, idx) => {
+            const IconComponent = item.Icon;
+            return (
+              <article
+                key={item.title}
+                className="legal-card"
+                data-reveal
+                onMouseEnter={() => setHoveredIndex(idx)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                <div className="legal-card-top">
+                  <div className="legal-card-meta">
+                    <span className="legal-card-num">{item.num}</span>
+                    <span className="legal-card-badge">{item.badge}</span>
+                  </div>
+                  <div className="legal-card-icon-box" aria-hidden="true">
+                    <IconComponent size={20} />
+                  </div>
+                </div>
+
+                <div className="legal-card-body">
+                  <h3>{item.title}</h3>
+                  <p>{item.desc}</p>
+
+                  <ul className="legal-features-list">
+                    {item.highlights.map((highlight, hIdx) => (
+                      <li key={hIdx}>
+                        <CheckCircle2 size={13} className="legal-check-icon" />
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="legal-card-footer">
+                  <span className="legal-card-tag">
+                    <span className="tag-dot" />
+                    {item.tag}
+                  </span>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        {/* Bottom Trust Validation Strip */}
+        <div className="legal-trust-strip" data-reveal>
+          <div className="trust-strip-item">
+            <Scale size={20} className="trust-strip-icon" />
+            <div>
+              <strong>100% Artist IP Protection</strong>
+              <span>Creators retain absolute master and songwriting rights</span>
+            </div>
+          </div>
+          <div className="trust-strip-item">
+            <Building2 size={20} className="trust-strip-icon" />
+            <div>
+              <strong>MeitY & STPI Incubation</strong>
+              <span>Government-recognized startup & tech framework</span>
+            </div>
+          </div>
+          <div className="trust-strip-item">
+            <Blocks size={20} className="trust-strip-icon" />
+            <div>
+              <strong>Polygon Smart Contracts</strong>
+              <span>Automated, immutable, on-chain royalty distribution</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -808,18 +899,147 @@ function ArtistSection() {
 }
 
 function ArtistJourney() {
-  const steps = ['Talent', 'Audition', 'Selection', 'Workshop', 'Music Creation', 'Music Ecosystem', 'Monetization', 'Growth'];
+  const [hoveredStep, setHoveredStep] = useState(null);
+
+  const journeySteps = [
+    {
+      num: '01',
+      title: 'Talent Discovery',
+      badge: 'Grassroots Scouting',
+      desc: 'Identifying raw, unrepresented vocalists, composers, and lyricists from Tier-2, Tier-3 and rural cultural hubs.',
+      Icon: Mic2,
+      tag: 'Scouting Phase'
+    },
+    {
+      num: '02',
+      title: 'Quarterly Auditions',
+      badge: 'District Circuit',
+      desc: 'Rigorous district auditions conducted every 3 months through exclusive franchise studio networks.',
+      Icon: Radio,
+      tag: '10,000+ / Year'
+    },
+    {
+      num: '03',
+      title: 'AI & Jury Selection',
+      badge: 'Smart Verification',
+      desc: 'Merit-based filtering combining acoustic ML audio analysis with veteran industry jury evaluations.',
+      Icon: Brain,
+      tag: 'Top 300 Artists'
+    },
+    {
+      num: '04',
+      title: 'Incubation Workshop',
+      badge: '30-Day Masterclass',
+      desc: 'Intensive month-long masterclasses covering vocal technique, sound mastering, stagecraft, and IP law.',
+      Icon: Award,
+      tag: 'Skill Mentorship'
+    },
+    {
+      num: '05',
+      title: 'Studio Music Creation',
+      badge: 'Pro Studio Rails',
+      desc: 'High-fidelity audio recording, AI-assisted arrangement, and professional 4K cinematic music video production.',
+      Icon: Disc3,
+      tag: 'Master Production'
+    },
+    {
+      num: '06',
+      title: 'Ecosystem Release',
+      badge: 'Global DSP Reach',
+      desc: 'Direct distribution across Spotify, Apple Music, YouTube, Wynk, JioSaavn, and regional OTT streaming channels.',
+      Icon: Globe2,
+      tag: 'Pan-India Release'
+    },
+    {
+      num: '07',
+      title: 'Web3 Monetization',
+      badge: 'Transparent Splits',
+      desc: 'Polygon blockchain smart contracts executing automated, immutable real-time royalty payouts to creators.',
+      Icon: WalletCards,
+      tag: 'On-Chain Royalty'
+    },
+    {
+      num: '08',
+      title: 'Sustainable Growth',
+      badge: 'Career Stardom',
+      desc: 'National live concerts, brand endorsements, sync licensing deals, and continuous long-term career acceleration.',
+      Icon: Rocket,
+      tag: 'National Stardom'
+    }
+  ];
+
   return (
-    <section className="artist-journey section-light">
+    <section className="artist-journey section-white" id="journey">
       <div className="container">
-        <SectionHeading eyebrow="Artist Journey" title="From local talent to music economy participation" />
-        <div className="timeline">
-          {steps.map((step, index) => (
-            <article key={step} data-reveal>
-              <span>{String(index + 1).padStart(2, '0')}</span>
-              <strong>{step}</strong>
-            </article>
-          ))}
+        <div className="journey-header" data-reveal>
+          <p className="eyebrow">Artist Journey</p>
+          <h2>From grassroots talent to national music icon.</h2>
+          <p className="journey-sub">
+            A structured 8-step incubation highway that transforms raw regional musicians into commercially celebrated,
+            royalty-earning music creators.
+          </p>
+        </div>
+
+        {/* 8-Step Sharp White Cards Grid */}
+        <div className="journey-roadmap-grid">
+          {journeySteps.map((step, idx) => {
+            const IconComponent = step.Icon;
+            return (
+              <article
+                key={step.title}
+                className="journey-step-card"
+                data-reveal
+                onMouseEnter={() => setHoveredStep(idx)}
+                onMouseLeave={() => setHoveredStep(null)}
+              >
+                <div className="step-card-top">
+                  <div className="step-meta">
+                    <span className="step-num">{step.num}</span>
+                    <span className="step-badge">{step.badge}</span>
+                  </div>
+                  <div className="step-icon-box" aria-hidden="true">
+                    <IconComponent size={20} />
+                  </div>
+                </div>
+
+                <div className="step-card-body">
+                  <h3>{step.title}</h3>
+                  <p>{step.desc}</p>
+                </div>
+
+                <div className="step-card-footer">
+                  <span className="step-tag">
+                    <span className="tag-dot" />
+                    {step.tag}
+                  </span>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        {/* Bottom Fast Metrics / Confidence Bar */}
+        <div className="journey-milestones-strip" data-reveal>
+          <div className="journey-stat-card">
+            <strong>10,000+</strong>
+            <span>Auditioned / Year</span>
+            <small>Across 10 Target States</small>
+          </div>
+          <div className="journey-stat-card">
+            <strong>300</strong>
+            <span>Selected for Workshops</span>
+            <small>Direct Producer Mentorship</small>
+          </div>
+          <div className="journey-stat-card">
+            <strong>4 Cycles</strong>
+            <span>Quarterly Auditions</span>
+            <small>Continuous Talent Pipeline</small>
+          </div>
+          <div className="journey-stat-card">
+            <strong>100%</strong>
+            <span>On-Chain Royalty</span>
+            <small>Immutable Smart Contracts</small>
+          </div>
         </div>
       </div>
     </section>
@@ -1001,55 +1221,258 @@ function GrowthRoadmap() {
 }
 
 function FranchiseSection() {
-  const factors = ['Population', 'Market Potential', 'Territory Size', 'Audience Reach', 'Business Opportunities'];
+  const [activeFactor, setActiveFactor] = useState(0);
+
+  const valuationFactors = [
+    {
+      num: '01',
+      title: 'Population & Demographics',
+      badge: 'Primary Factor',
+      desc: 'District youth density and regional cultural concentration driving grassroots talent discovery and mass audience volume.',
+      Icon: Users,
+      tag: 'Scale & Density'
+    },
+    {
+      num: '02',
+      title: 'Market Potential',
+      badge: 'Growth Index',
+      desc: 'Vernacular music consumption, local streaming uptake, and regional live entertainment spending appetite.',
+      Icon: TrendingUp,
+      tag: 'Revenue Upside'
+    },
+    {
+      num: '03',
+      title: 'Territory Size & Monopoly',
+      badge: '1:1 Protection',
+      desc: 'Geographic exclusivity guaranteeing only one single franchise allocated per district with zero internal competition.',
+      Icon: MapPin,
+      tag: 'Protected Territory'
+    },
+    {
+      num: '04',
+      title: 'Audience Virality',
+      badge: 'Omnichannel',
+      desc: 'Direct fan engagement across college circuits, regional FM channels, OTT music shows, and digital streaming DSPs.',
+      Icon: Radio,
+      tag: 'Grassroots Reach'
+    },
+    {
+      num: '05',
+      title: 'Commercial Business',
+      badge: 'Multi-Stream',
+      desc: 'Co-creation recording studios, live concert tours, sync licensing deals, and local brand collaborations.',
+      Icon: BriefcaseBusiness,
+      tag: 'Monetization Rails'
+    }
+  ];
+
   return (
     <section className="franchise section-black" id="franchise">
-      <div className="container franchise-grid">
-        <div data-reveal>
-          <p className="eyebrow">Franchise Opportunity</p>
-          <h2>Giving emerging artists the recognition, visibility and opportunities they deserve.</h2>
-          <p>
-            The District-Wise Exclusive Franchise Model allocates one exclusive franchise per district. Franchise
-            valuation is determined based on district-specific market factors.
-          </p>
-          <Button href="#contact" variant="red">
-            Explore Franchise Opportunity
-          </Button>
+      <div className="container">
+        {/* Top Header & 50:50 Hero Deck Split */}
+        <div className="franchise-hero-split">
+          <div className="franchise-intro" data-reveal>
+            <p className="eyebrow">Franchise Opportunity</p>
+            <h2>Giving emerging artists the recognition, visibility and opportunities they deserve.</h2>
+            <p className="franchise-lead">
+              The District-Wise Exclusive Franchise Model allocates one exclusive franchise per district. Franchise
+              valuation is strategically calculated based on 5 district-specific market factors.
+            </p>
+
+            <div className="franchise-feature-pills">
+              <div className="feature-pill">
+                <span className="pill-dot" />
+                <span><strong>1 District : 1 Franchise</strong> Territorial Monopoly</span>
+              </div>
+              <div className="feature-pill">
+                <span className="pill-dot" />
+                <span><strong>STPI / MeitY</strong> Incubation & AI Tech Rails</span>
+              </div>
+              <div className="feature-pill">
+                <span className="pill-dot" />
+                <span><strong>Asset-Backed</strong> IP Co-Monetization</span>
+              </div>
+            </div>
+
+            <div className="franchise-cta-wrap">
+              <Button href="#contact" variant="red">
+                Explore Franchise Opportunity
+              </Button>
+            </div>
+          </div>
+
+          <div className="franchise-revenue-card" data-reveal>
+            <div className="revenue-card-header">
+              <span className="revenue-card-tag">Co-Operative Framework</span>
+              <span className="revenue-live-dot" />
+            </div>
+
+            <div className="revenue-split-grid">
+              <div className="revenue-box mom-side">
+                <span className="rev-badge">50% Equity</span>
+                <strong>MOM Tech Hub</strong>
+                <p>AI Engine, National DSP Distribution, STPI Incubation & Polygon Web3 Rails</p>
+              </div>
+
+              <div className="revenue-split-badge">
+                <span>VS</span>
+              </div>
+
+              <div className="revenue-box partner-side">
+                <span className="rev-badge">50% Equity</span>
+                <strong>Franchise Partner</strong>
+                <p>Exclusive District Studio, Grassroots Artist Scouting, Live Tours & Local IP</p>
+              </div>
+            </div>
+
+            <div className="revenue-card-footer">
+              <strong>Proposed 50:50 Revenue Sharing Model</strong>
+              <p>Transparent blockchain-governed payouts with zero operational blindspots.</p>
+            </div>
+          </div>
         </div>
-        <div className="franchise-factors" data-reveal>
-          {factors.map((factor) => (
-            <span key={factor}>{factor}</span>
-          ))}
+
+        {/* 5 Valuation Factor Cards */}
+        <div className="franchise-factors-wrap">
+          <div className="factors-header" data-reveal>
+            <span className="factors-eyebrow">Valuation Framework</span>
+            <h3>How District Valuation is Determined</h3>
+            <p>Every territory is evaluated across 5 key market metrics to calculate franchise capitalization and launch capacity.</p>
+          </div>
+
+          <div className="factors-grid" data-reveal>
+            {valuationFactors.map((factor, idx) => {
+              const IconComponent = factor.Icon;
+              const isActive = activeFactor === idx;
+              return (
+                <article
+                  key={factor.title}
+                  className={`factor-card ${idx >= 3 ? 'factor-card-wide' : ''} ${isActive ? 'active' : ''}`}
+                  onMouseEnter={() => setActiveFactor(idx)}
+                  onClick={() => setActiveFactor(idx)}
+                >
+                  <div className="factor-card-top">
+                    <div className="factor-num-badge">{factor.num}</div>
+                    <div className="factor-icon-box" aria-hidden="true">
+                      <IconComponent size={20} />
+                    </div>
+                  </div>
+
+                  <div className="factor-card-body">
+                    <span className="factor-badge-pill">{factor.badge}</span>
+                    <h4>{factor.title}</h4>
+                    <p>{factor.desc}</p>
+                  </div>
+
+                  <div className="factor-card-footer">
+                    <span className="factor-metric-tag">
+                      <span className="tag-dot" />
+                      {factor.tag}
+                    </span>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
         </div>
-      </div>
-      <div className="container sharing" data-reveal>
-        <span>MOM</span>
-        <strong>Proposed 50:50 Revenue Sharing</strong>
-        <span>Franchise Partner</span>
       </div>
     </section>
   );
 }
 
 function SupportEcosystem() {
-  const items = [
-    ['Market Access Support', Handshake],
-    ['Technology Support', Brain],
-    ['Legal & Compliance Support', Scale],
-    ['Blockchain Infrastructure', Blocks],
-    ['India-Wide STPI Network', Building2]
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  const pillars = [
+    {
+      num: '01',
+      title: 'Market Access Support',
+      badge: 'Pan-India Reach',
+      desc: 'Direct highway connecting grassroots artists and studio franchises to national streaming DSPs, OTT deals, and brand endorsements.',
+      Icon: Handshake,
+      tag: 'Distribution Network'
+    },
+    {
+      num: '02',
+      title: 'AI & Technology Support',
+      badge: 'Proprietary ML',
+      desc: 'AI-assisted melody structuring, voice enhancement, automated mastering, and algorithmic viral trend forecasting engines.',
+      Icon: Brain,
+      tag: 'Audio Intelligence Engine'
+    },
+    {
+      num: '03',
+      title: 'Legal & Compliance Support',
+      badge: '100% Protected',
+      desc: 'Institutional contract frameworks, automated copyright defense, and transparent licensing safeguards for all music assets.',
+      Icon: Scale,
+      tag: 'Smart IP Escrow'
+    },
+    {
+      num: '04',
+      title: 'Blockchain Infrastructure',
+      badge: 'Web3 Ledger',
+      desc: 'Polygon blockchain backbone providing immutable ownership certificates and instantaneous micro-royalty splits.',
+      Icon: Blocks,
+      tag: 'Polygon zkEVM Backbone'
+    },
+    {
+      num: '05',
+      title: 'India-Wide STPI Network',
+      badge: 'MeitY Incubated',
+      desc: 'Supported through Software Technology Parks of India (STPI) with government-grade digital infrastructure and mentorship.',
+      Icon: Building2,
+      tag: 'Govt. Incubation Moat'
+    }
   ];
+
   return (
-    <section className="support section-light">
+    <section className="support section-light" id="support">
       <div className="container">
-        <SectionHeading eyebrow="Support Ecosystem" title="Institutional support pillars" />
+        <div className="support-header" data-reveal>
+          <p className="eyebrow">Support Ecosystem</p>
+          <h2>Institutional support pillars backing the revolution.</h2>
+          <p className="support-sub">
+            MOM delivers a comprehensive institutional foundation combining government incubation, cutting-edge AI,
+            secure blockchain rails, and market access for partners and artists.
+          </p>
+        </div>
+
         <div className="support-grid">
-          {items.map(([title, Icon]) => (
-            <article key={title} data-reveal>
-              <Icon size={26} />
-              <strong>{title}</strong>
-            </article>
-          ))}
+          {pillars.map((item, idx) => {
+            const IconComponent = item.Icon;
+            return (
+              <article
+                key={item.title}
+                className={`support-card ${idx >= 3 ? 'support-card-wide' : ''}`}
+                data-reveal
+                onMouseEnter={() => setHoveredIndex(idx)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                <div className="support-card-top">
+                  <div className="support-card-meta">
+                    <span className="support-card-num">{item.num}</span>
+                    <span className="support-card-badge">{item.badge}</span>
+                  </div>
+                  <div className="support-card-icon-box" aria-hidden="true">
+                    <IconComponent size={22} />
+                  </div>
+                </div>
+
+                <div className="support-card-body">
+                  <h3>{item.title}</h3>
+                  <p>{item.desc}</p>
+                </div>
+
+                <div className="support-card-footer">
+                  <span className="support-card-tag">
+                    <span className="tag-dot" />
+                    {item.tag}
+                  </span>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -1058,30 +1481,141 @@ function SupportEcosystem() {
 
 
 function InvestmentSection() {
-  const items = ['Transparency', 'Public Interest', 'Risk Free', 'Revenue Generated', 'Trending'];
+  const [activeCard, setActiveCard] = useState(0);
+
+  const pillars = [
+    {
+      num: '01',
+      title: 'Transparency',
+      badge: 'Zero Blindspots',
+      desc: 'Real-time smart contracts with verified immutable on-chain royalty distribution.',
+      Icon: ShieldCheck,
+      tag: '100% Audit Trail'
+    },
+    {
+      num: '02',
+      title: 'Public Interest',
+      badge: 'Mass Demand',
+      desc: 'Empowering grassroots Tier-2 & Tier-3 music creators with high organic fan adoption.',
+      Icon: Users,
+      tag: 'High Virality'
+    },
+    {
+      num: '03',
+      title: 'Risk Free',
+      badge: 'Asset-Backed',
+      desc: 'District-exclusive franchise ownership with hedged risk and verified digital rights.',
+      Icon: LockKeyhole,
+      tag: 'Protected Capital'
+    },
+    {
+      num: '04',
+      title: 'Revenue Generated',
+      badge: 'Multi-Channel',
+      desc: 'Diverse commercial revenue: streaming, sync licensing, live gigs & artist IP merch.',
+      Icon: TrendingUp,
+      tag: '50:50 Shared Upside'
+    },
+    {
+      num: '05',
+      title: 'Trending',
+      badge: 'Exponential Scale',
+      desc: 'AI-assisted hit generation capitalizing on India’s booming regional music revolution.',
+      Icon: Zap,
+      tag: 'Regional Growth'
+    }
+  ];
+
+  const stats = [
+    { value: '100%', label: 'Royalty Transparency', sub: 'On-chain Smart Contracts' },
+    { value: '50:50', label: 'Co-Operative Model', sub: 'Franchise Revenue Sharing' },
+    { value: '1 District : 1', label: 'Territory Exclusivity', sub: 'Zero Internal Competition' },
+    { value: 'STPI / MeitY', label: 'Govt. Incubation', sub: 'Institutional Backing' }
+  ];
+
   return (
-    <section className="investment section-charcoal">
-      <div className="container investment-grid">
-        <figure data-reveal>
-          <img src={media.ownership} alt="Premium MOM music ownership visual for investor information" loading="lazy" />
-        </figure>
-        <div data-reveal>
-          <p className="eyebrow">Investment & Valuation</p>
-          <h2>What investors want to know before investing.</h2>
-          <p>
-            This section preserves the company's supplied presentation language and does not add financial guarantees or
-            unsupported investment promises.
-          </p>
-          <div className="investment-row">
-            {items.map((item) => (
-              <span key={item}>{item}</span>
-            ))}
+    <section className="investment section-charcoal" id="investment">
+      <div className="container">
+        <div className="investment-grid">
+          <div className="investment-visual-col" data-reveal>
+            <div className="investment-visual-frame">
+              <img
+                src={media.ownership}
+                alt="Premium MOM music ownership visual for investor information"
+                loading="lazy"
+              />
+              <div className="investment-badge-top">
+                <span className="live-dot" aria-hidden="true" />
+                <span>Institutional Grade</span>
+              </div>
+              <div className="investment-badge-bottom">
+                <div className="badge-bottom-icon">
+                  <BadgeCheck size={24} />
+                </div>
+                <div>
+                  <strong>STPI & MeitY Incubated</strong>
+                  <p>AI-Powered & Web3 Protected Music Ecosystem</p>
+                </div>
+              </div>
+            </div>
           </div>
+
+          <div className="investment-content-col" data-reveal>
+            <p className="eyebrow">Investment & Valuation</p>
+            <h2>What investors want to know before investing.</h2>
+            <p className="investment-intro">
+              This section preserves the company's supplied presentation language and does not add financial guarantees
+              or unsupported investment promises.
+            </p>
+
+            <div className="investment-cards-grid">
+              {pillars.map((item, idx) => {
+                const IconComponent = item.Icon;
+                const isActive = activeCard === idx;
+                return (
+                  <article
+                    key={item.title}
+                    className={`investor-card ${isActive ? 'active' : ''}`}
+                    onMouseEnter={() => setActiveCard(idx)}
+                    onClick={() => setActiveCard(idx)}
+                  >
+                    <div className="investor-card-header">
+                      <span className="investor-card-num">{item.num}</span>
+                      <div className="investor-card-icon">
+                        <IconComponent size={20} />
+                      </div>
+                    </div>
+                    <div className="investor-card-body">
+                      <h3>{item.title}</h3>
+                      <p>{item.desc}</p>
+                    </div>
+                    <div className="investor-card-footer">
+                      <span className="investor-card-tag">
+                        <span className="dot" />
+                        {item.tag}
+                      </span>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        <div className="investment-stats-strip" data-reveal>
+          {stats.map((stat) => (
+            <div key={stat.label} className="investor-stat-box">
+              <strong>{stat.value}</strong>
+              <span>{stat.label}</span>
+              <small>{stat.sub}</small>
+            </div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
+
 
 function FinalCTA() {
   return (
