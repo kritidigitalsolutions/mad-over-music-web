@@ -1426,7 +1426,6 @@ function SupportEcosystem() {
       badge: 'MeitY Incubated',
       desc: 'Supported through Software Technology Parks of India (STPI) with government-grade digital infrastructure and mentorship.',
       Icon: Building2,
-      logo: media.stpiLogo,
       tag: 'Govt. Incubation Moat'
     }
   ];
@@ -1434,13 +1433,40 @@ function SupportEcosystem() {
   return (
     <section className="support section-light" id="support">
       <div className="container">
-        <div className="support-header" data-reveal>
-          <p className="eyebrow">Support Ecosystem</p>
-          <h2>Institutional support pillars backing the revolution.</h2>
-          <p className="support-sub">
-            MOM delivers a comprehensive institutional foundation combining government incubation, cutting-edge AI,
-            secure blockchain rails, and market access for partners and artists.
-          </p>
+        <div className="support-header-wrap" data-reveal>
+          <div className="support-header-left">
+            <p className="eyebrow">Support Ecosystem</p>
+            <h2>Institutional support pillars backing the revolution.</h2>
+            <p className="support-sub">
+              MOM delivers a comprehensive institutional foundation combining government incubation, cutting-edge AI,
+              secure blockchain rails, and market access for partners and artists.
+            </p>
+          </div>
+
+          <aside className="support-header-stpi-card" aria-label="STPI Government Incubation Partner">
+            <div className="stpi-card-badge-row">
+              <span className="stpi-badge-live"><span className="stpi-live-dot" /> MeitY Incubated</span>
+              <span className="stpi-badge-id">Official Backing</span>
+            </div>
+            <div className="stpi-card-content">
+              <div className="stpi-logo-container">
+                <img
+                  src={media.stpiLogo}
+                  alt="STPI - Software Technology Parks of India, Ministry of Electronics & IT"
+                  className="stpi-logo-img"
+                />
+              </div>
+              <div className="stpi-card-text">
+                <h4>Software Technology Parks of India</h4>
+                <p>Autonomous Society under Ministry of Electronics &amp; Information Technology (MeitY), Govt. of India</p>
+              </div>
+            </div>
+            <div className="stpi-card-footer">
+              <span className="stpi-foot-tag">
+                <span className="tag-dot" /> Govt. Digital Infrastructure &amp; Incubation Network
+              </span>
+            </div>
+          </aside>
         </div>
 
         <div className="support-grid">
@@ -1460,11 +1486,7 @@ function SupportEcosystem() {
                     <span className="support-card-badge">{item.badge}</span>
                   </div>
                   <div className="support-card-icon-box" aria-hidden="true">
-                    {item.logo ? (
-                      <img src={item.logo} alt="STPI Logo" className="support-card-logo-img" />
-                    ) : (
-                      <IconComponent size={22} />
-                    )}
+                    <IconComponent size={22} />
                   </div>
                 </div>
 

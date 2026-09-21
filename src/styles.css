@@ -2266,18 +2266,152 @@ p {
   border-bottom: 1px solid var(--line);
 }
 
-.support-header {
-  max-width: 760px;
+.support-header-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: clamp(24px, 3.5vw, 48px);
   margin-bottom: clamp(36px, 5vw, 56px);
 }
 
-.support-header h2 {
+.support-header-left {
+  max-width: 680px;
+  flex: 1 1 520px;
+}
+
+.support-header-left h2 {
   font-size: clamp(2rem, 3.4vw, 3.2rem);
   font-weight: 800;
   line-height: 1.15;
   text-transform: uppercase;
   letter-spacing: -0.02em;
   margin-block: 10px 14px;
+}
+
+.support-header-stpi-card {
+  flex: 0 0 400px;
+  max-width: 440px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--red);
+  padding: 16px 20px;
+  border-radius: 0;
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.06);
+  transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
+}
+
+.support-header-stpi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px -6px rgba(0, 0, 0, 0.1);
+  border-color: var(--line);
+  border-left-color: var(--red);
+}
+
+.stpi-card-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.stpi-badge-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--red);
+  background: rgba(227, 27, 35, 0.08);
+  border: 1px solid rgba(227, 27, 35, 0.18);
+  padding: 3px 8px;
+  border-radius: 0;
+}
+
+.stpi-live-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--red);
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(227, 27, 35, 0.8);
+  animation: pulseDot 2s infinite;
+}
+
+.stpi-badge-id {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.stpi-card-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stpi-logo-container {
+  width: 72px;
+  height: 72px;
+  min-width: 72px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: 0;
+}
+
+.stpi-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.stpi-card-text h4 {
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--charcoal);
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.stpi-card-text p {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.stpi-card-footer {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.stpi-foot-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--charcoal);
+}
+
+.stpi-foot-tag .tag-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--red);
+  border-radius: 0;
 }
 
 .support-sub {
@@ -3175,6 +3309,18 @@ footer nav a:hover {
   .legal-grid,
   .support-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .support-header-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .support-header-stpi-card {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
   }
 }
 
