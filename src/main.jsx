@@ -62,7 +62,8 @@ const media = {
   finalCta: asset('final-cta.png'),
   roadmap: asset('roadmap.png'),
   studioWide: asset('studio-wide.png'),
-  revenue: asset('revenue-model.png')
+  revenue: asset('revenue-model.png'),
+  stpiLogo: asset('stpi-logo.png')
 };
 
 const navItems = [
@@ -708,8 +709,9 @@ function Incubation() {
     <section className="incubation section-light" id="incubation">
       <div className="container split">
         <div data-reveal>
-          <div className="badge-pill">
-            <Landmark size={15} /> Institutional Credibility
+          <div className="badge-pill stpi-badge-pill">
+            <img src={media.stpiLogo} alt="STPI Logo" className="stpi-inline-logo" />
+            <span>MeitY & STPI Govt. Incubated</span>
           </div>
           <h2>Government-Linked Incubation & Tech Backing</h2>
           <p className="lead">
@@ -741,10 +743,12 @@ function Incubation() {
           <figure className="incubation-image">
             <img src={media.ai} alt="MOM AI and music technology architecture" loading="lazy" />
           </figure>
-          <div className="recognition-card primary">
-            <Landmark size={28} />
+          <div className="recognition-card primary stpi-card">
+            <div className="stpi-card-logo-box">
+              <img src={media.stpiLogo} alt="Software Technology Parks of India Logo" />
+            </div>
             <div>
-              <strong>STPI Incubated</strong>
+              <strong>STPI Incubated Platform</strong>
               <span>Ministry of Electronics & IT (MeitY), Govt. of India</span>
             </div>
           </div>
@@ -1422,6 +1426,7 @@ function SupportEcosystem() {
       badge: 'MeitY Incubated',
       desc: 'Supported through Software Technology Parks of India (STPI) with government-grade digital infrastructure and mentorship.',
       Icon: Building2,
+      logo: media.stpiLogo,
       tag: 'Govt. Incubation Moat'
     }
   ];
@@ -1455,7 +1460,11 @@ function SupportEcosystem() {
                     <span className="support-card-badge">{item.badge}</span>
                   </div>
                   <div className="support-card-icon-box" aria-hidden="true">
-                    <IconComponent size={22} />
+                    {item.logo ? (
+                      <img src={item.logo} alt="STPI Logo" className="support-card-logo-img" />
+                    ) : (
+                      <IconComponent size={22} />
+                    )}
                   </div>
                 </div>
 
@@ -1696,6 +1705,13 @@ function Footer() {
         <div className="footer-brand">
           <img src={media.logoLight} alt="MAD OVER MUSIC logo" />
           <p>A technology enabled ecosystem connecting talent discovery to music creation and monetization.</p>
+          <div className="footer-stpi-badge">
+            <img src={media.stpiLogo} alt="STPI Software Technology Parks of India" />
+            <div>
+              <small>Incubated Platform</small>
+              <strong>STPI · MeitY Govt. of India</strong>
+            </div>
+          </div>
           <a className="button button-red" href="#contact">
             <span>Get in Touch</span>
             <ArrowRight size={18} />
