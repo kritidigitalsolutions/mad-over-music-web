@@ -1280,7 +1280,7 @@ p {
   padding: clamp(24px, 4vw, 46px);
   background:
     linear-gradient(180deg, rgba(8, 8, 8, 0.24), rgba(8, 8, 8, 0.92)),
-    url('/assets/7. BLOCKCHAIN SECURITY.png') center / cover;
+    url('/assets/blockchain-security.png') center / cover;
   color: var(--white);
   border-left: 5px solid var(--red);
 }

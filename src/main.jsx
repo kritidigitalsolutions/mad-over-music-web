@@ -42,24 +42,24 @@ gsap.registerPlugin(ScrollTrigger);
 const asset = (name) => `/assets/${name}`;
 
 const media = {
-  logo: asset('mom logo light.png'),
-  logoLight: asset('mom logo light.png'),
-  logoDark: asset('Mom logo dark.png'),
-  motionLogo: asset('Motion Logo.mp4'),
-  hero: asset('1. HERO.png'),
-  about: asset('2. ABOUT.png'),
-  industry: asset('3. INDUSTRY.png'),
-  artistPortrait: asset('4. ARTIST SECTION.png'),
-  artistWide: asset('5. ARTIST SECTION.png'),
-  ai: asset('6. AI + MUSIC.png'),
-  blockchain: asset('7. BLOCKCHAIN SECURITY.png'),
-  ownership: asset('8. MUSIC OWNERSHIP MARKETPLACE.png'),
-  royalty: asset('9. ROYALTY TRANSPARENCY.png'),
-  exclusive: asset('10. EXCLUSIVE MUSIC EXPERIENCESs.png'),
-  finalCta: asset('17. FINAL CTA.png'),
-  roadmap: asset('ChatGPT Image Sep 18, 2026, 01_04_14 PM.png'),
-  studioWide: asset('ChatGPT Image Sep 18, 2026, 01_26_44 PM.png'),
-  revenue: asset('REVENUE MODEL.png')
+  logo: asset('mom-logo-light.png'),
+  logoLight: asset('mom-logo-light.png'),
+  logoDark: asset('mom-logo-dark.png'),
+  motionLogo: asset('motion-logo.mp4'),
+  hero: asset('hero.png'),
+  about: asset('about.png'),
+  industry: asset('industry.png'),
+  artistPortrait: asset('artist-portrait.png'),
+  artistWide: asset('artist-wide.png'),
+  ai: asset('ai-music.png'),
+  blockchain: asset('blockchain-security.png'),
+  ownership: asset('ownership-marketplace.png'),
+  royalty: asset('royalty-transparency.png'),
+  exclusive: asset('exclusive-experiences.png'),
+  finalCta: asset('final-cta.png'),
+  roadmap: asset('roadmap.png'),
+  studioWide: asset('studio-wide.png'),
+  revenue: asset('revenue-model.png')
 };
 
 const navItems = [
