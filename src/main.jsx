@@ -86,13 +86,64 @@ const mobileItems = [
   ['Contact', 'contact']
 ];
 
+const visionItems = [
+  {
+    num: '01',
+    badge: 'Core Belief',
+    title: 'Democratize Grassroots Talent',
+    tagline: 'Talent is Born Out of Poverty',
+    desc: 'Breaking geographical and economic barriers. MOM creates a direct highway for raw, unrepresented talent in Tier-2, Tier-3 and rural India to get discovered and celebrated.',
+    Icon: Sparkles
+  },
+  {
+    num: '02',
+    badge: 'Our Commitment',
+    title: 'Sustainable Creative Employment',
+    tagline: 'Real Careers & Royalty Incomes',
+    desc: 'Transforming musical passion into viable livelihoods. Through structured auditions, professional workshops, and ongoing royalty sharing, creators build sustainable careers.',
+    Icon: BriefcaseBusiness
+  },
+  {
+    num: '03',
+    badge: 'Industry Disruption',
+    title: 'Ending Industry Monopolies',
+    tagline: 'Decentralized Music Ownership',
+    desc: 'Replacing closed gatekeeping with complete transparency. Powered by AI and Polygon Blockchain, creator ownership, licensing, and payouts remain immutable and fair.',
+    Icon: Scale
+  }
+];
+
 const legalPoints = [
-  ['Structured legal and business framework', FileCheck2],
-  ['Artist rights and intellectual property', Scale],
-  ['Regulatory compliance', BadgeCheck],
-  ['Blockchain-supported transaction records', Blocks],
-  ['Transparent platform policies', ShieldCheck],
-  ['Secure digital ecosystem', LockKeyhole]
+  {
+    title: 'Structured Legal & Business Framework',
+    desc: 'Operating under established corporate governance and entertainment compliance standards.',
+    Icon: FileCheck2
+  },
+  {
+    title: 'Artist Rights & IP Protection',
+    desc: 'Clear intellectual property ownership ensuring creators retain full legal rights to their work.',
+    Icon: Scale
+  },
+  {
+    title: 'Regulatory & Statutory Compliance',
+    desc: 'Full alignment with national digital media, copyright, and e-commerce compliance guidelines.',
+    Icon: BadgeCheck
+  },
+  {
+    title: 'Blockchain-Supported Audit Trails',
+    desc: 'Immutable on-chain records for licensing, digital asset provenance, and royalty distribution.',
+    Icon: Blocks
+  },
+  {
+    title: 'Transparent Platform Policies',
+    desc: 'Clear, ethical revenue-split agreements and partner contracts with zero hidden clauses.',
+    Icon: ShieldCheck
+  },
+  {
+    title: 'Secure Digital Ecosystem',
+    desc: 'Bank-grade access controls and encrypted infrastructure protecting user data and assets.',
+    Icon: LockKeyhole
+  }
 ];
 
 const journey = [
@@ -295,21 +346,20 @@ function App() {
         <BrandStrip />
         <AboutSection />
         <VisionMission />
-        <LegalFoundation />
-        <Incubation />
         <ProblemSection />
         <SolutionJourney />
         <Ecosystem />
+        <CompetitiveAdvantage />
+        <Incubation />
         <PremiumOfferings />
         <ArtistSection />
         <ArtistJourney />
         <RevenueModel />
         <MarketStrategy />
-        <CompetitiveAdvantage />
         <GrowthRoadmap />
         <FranchiseSection />
+        <LegalFoundation />
         <SupportEcosystem />
-        <SecurityRecognition />
         <InvestmentSection />
         <FinalCTA />
         <ContactSection />
@@ -502,19 +552,32 @@ function AboutSection() {
 }
 
 function VisionMission() {
-  const items = ['Talent is born out of poverty', 'Employment', 'End monopoly from industry'];
   return (
     <section className="vision section-charcoal" id="vision">
       <div className="container">
-        <SectionHeading eyebrow="Vision & Mission" title="A fairer path into music">
-          Three company-provided principles shape MOM's mission.
+        <SectionHeading
+          eyebrow="Vision & Mission"
+          title="A fairer path into the future of music"
+        >
+          Three foundational principles driving MOM's mission to revolutionize India's music economy.
         </SectionHeading>
-        <div className="vision-line draw-line" />
         <div className="vision-grid">
-          {items.map((item, index) => (
-            <article key={item} data-reveal>
-              <span>{String(index + 1).padStart(2, '0')}</span>
-              <h3>{item}</h3>
+          {visionItems.map((item) => (
+            <article className="vision-card" key={item.title} data-reveal>
+              <div className="vision-card-top">
+                <div className="vision-num-wrap">
+                  <span className="vision-num">{item.num}</span>
+                  <span className="vision-badge">{item.badge}</span>
+                </div>
+                <div className="vision-icon-box" aria-hidden="true">
+                  <item.Icon size={22} />
+                </div>
+              </div>
+              <div className="vision-card-body">
+                <span className="vision-tagline">{item.tagline}</span>
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </div>
             </article>
           ))}
         </div>
@@ -525,16 +588,22 @@ function VisionMission() {
 
 function LegalFoundation() {
   return (
-    <section className="legal section-ivory">
+    <section className="legal section-ivory" id="legal">
       <div className="container">
-        <SectionHeading eyebrow="Legal Foundation" title="Building MOM on a strong foundation">
-          A secure music ecosystem depends on rights, policy, compliance and trust.
+        <SectionHeading
+          eyebrow="Legal Foundation & Trust"
+          title="Building MOM on a rock-solid foundation"
+        >
+          A secure, sustainable music ecosystem built on creator rights, transparent policy, and regulatory compliance.
         </SectionHeading>
         <div className="legal-grid">
-          {legalPoints.map(([label, Icon]) => (
-            <article key={label} data-reveal>
-              <Icon size={24} />
-              <p>{label}</p>
+          {legalPoints.map(({ title, desc, Icon }) => (
+            <article className="legal-card" key={title} data-reveal>
+              <div className="legal-card-icon" aria-hidden="true">
+                <Icon size={22} />
+              </div>
+              <h3>{title}</h3>
+              <p>{desc}</p>
             </article>
           ))}
         </div>
@@ -545,39 +614,62 @@ function LegalFoundation() {
 
 function Incubation() {
   return (
-    <section className="incubation section-light">
+    <section className="incubation section-light" id="incubation">
       <div className="container split">
         <div data-reveal>
-          <p className="eyebrow">Incubation & Recognition</p>
-          <h2>Government-linked incubation support</h2>
-          <p>
-            MOM is incubated under Government STPI, which falls under the Ministry of Electronics and Information
-            Technology. The supplied presentation places MOM within a Haryana Government support context and identifies
-            AI and blockchain as key technology sectors.
+          <div className="badge-pill">
+            <Landmark size={15} /> Institutional Credibility
+          </div>
+          <h2>Government-Linked Incubation & Tech Backing</h2>
+          <p className="lead">
+            MAD OVER MUSIC is officially incubated under <strong>STPI (Software Technology Parks of India)</strong>,
+            Ministry of Electronics & Information Technology (MeitY), Government of India.
           </p>
           <p>
-            The presentation states that MOM is using Polygon AI Blockchain and references STPI's India-wide network of
-            offices as part of the wider expansion context.
+            Operating within the Haryana Government innovation framework, MOM utilizes STPI's pan-India network of 
+            centres and technology infrastructure to accelerate grassroots outreach, artist discovery, and secure adoption.
           </p>
+          <div className="incubation-highlights">
+            <div className="highlight-item">
+              <ShieldCheck size={20} />
+              <div>
+                <strong>MeitY & STPI Support</strong>
+                <span>Government incubation & institutional mentorship</span>
+              </div>
+            </div>
+            <div className="highlight-item">
+              <Blocks size={20} />
+              <div>
+                <strong>Polygon AI Blockchain</strong>
+                <span>Decentralized rights & immutable audit logs</span>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="recognition-panel" data-reveal>
           <figure className="incubation-image">
-            <img src={media.ai} alt="Editorial AI and music technology visual for MOM" loading="lazy" />
+            <img src={media.ai} alt="MOM AI and music technology architecture" loading="lazy" />
           </figure>
-          <div>
-            <Landmark size={30} />
-            <strong>STPI</strong>
-            <span>Government incubation</span>
+          <div className="recognition-card primary">
+            <Landmark size={28} />
+            <div>
+              <strong>STPI Incubated</strong>
+              <span>Ministry of Electronics & IT (MeitY), Govt. of India</span>
+            </div>
           </div>
-          <div>
-            <Brain size={30} />
-            <strong>AI + Blockchain</strong>
-            <span>Key technology sectors</span>
+          <div className="recognition-card">
+            <Brain size={28} />
+            <div>
+              <strong>AI + Music Intelligence</strong>
+              <span>Smart discovery & audio creation toolset</span>
+            </div>
           </div>
-          <div>
-            <Blocks size={30} />
-            <strong>Polygon AI Blockchain</strong>
-            <span>Company-provided positioning</span>
+          <div className="recognition-card">
+            <Blocks size={28} />
+            <div>
+              <strong>Polygon AI Blockchain</strong>
+              <span>Decentralized rights & immutable royalty settlement</span>
+            </div>
           </div>
         </div>
       </div>
@@ -964,33 +1056,6 @@ function SupportEcosystem() {
   );
 }
 
-function SecurityRecognition() {
-  return (
-    <section className="security section-ivory">
-      <div className="container security-grid">
-        <div className="security-copy" data-reveal>
-          <p className="eyebrow">Security & Recognition</p>
-          <h2>MOM is incubated with STPI.</h2>
-          <p>
-            The supplied presentation positions MOM within a government-linked incubation ecosystem under STPI and the
-            Ministry of Electronics and Information Technology context.
-          </p>
-          <div className="security-points">
-            <span>Government-linked incubation</span>
-            <span>Legal, technology and market access support</span>
-            <span>Secure digital ecosystem positioning</span>
-          </div>
-        </div>
-        <div className="security-card" data-reveal>
-          <ShieldCheck size={44} />
-          <strong>Government-linked incubation</strong>
-          <span>STPI under the Ministry of Electronics and Information Technology</span>
-          <small>Company-provided positioning from the supplied presentation.</small>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function InvestmentSection() {
   const items = ['Transparency', 'Public Interest', 'Risk Free', 'Revenue Generated', 'Trending'];

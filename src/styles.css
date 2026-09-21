@@ -307,9 +307,9 @@ p {
 
 h2 {
   margin-bottom: 22px;
-  font-size: clamp(2.35rem, 5.4vw, 5.5rem);
-  line-height: 0.94;
-  letter-spacing: 0;
+  font-size: clamp(1.85rem, 3.6vw, 3.8rem);
+  line-height: 0.96;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
 }
 
@@ -369,9 +369,9 @@ p {
 
 .hero h1 {
   margin: 0;
-  font-size: clamp(2.8rem, 5.25vw, 5.85rem);
-  line-height: 0.88;
-  letter-spacing: 0;
+  font-size: clamp(2.6rem, 4.5vw, 4.8rem);
+  line-height: 0.9;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
 }
 
@@ -585,54 +585,268 @@ p {
 .vision-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(20px, 4vw, 56px);
+  gap: 24px;
 }
 
-.vision-grid article {
-  min-height: 280px;
+.vision-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-top: 1px solid var(--light-line);
-  padding-top: 24px;
+  min-height: 360px;
+  padding: clamp(28px, 3vw, 40px);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  backdrop-filter: blur(10px);
+  transition: transform 280ms cubic-bezier(0.2, 0, 0, 1), border-color 280ms ease, box-shadow 280ms ease;
+  overflow: hidden;
 }
 
-.vision-grid span {
-  color: var(--red);
-  font-size: clamp(3rem, 8vw, 8rem);
+.vision-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 280ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.vision-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(227, 27, 35, 0.6);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45), 0 0 30px rgba(227, 27, 35, 0.15);
+}
+
+.vision-card:hover::before {
+  transform: scaleX(1);
+}
+
+.vision-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.vision-num-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.vision-num {
+  color: var(--soft-red);
+  font-size: 1.1rem;
   font-weight: 800;
-  line-height: 0.9;
+  letter-spacing: 0.12em;
 }
 
-.legal-grid,
+.vision-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  background: rgba(240, 68, 75, 0.14);
+  border: 1px solid rgba(240, 68, 75, 0.3);
+  color: var(--soft-red);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.vision-icon-box {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(240, 68, 75, 0.12);
+  color: var(--soft-red);
+  border: 1px solid rgba(240, 68, 75, 0.28);
+  transition: transform 260ms ease, background 260ms ease, color 260ms ease;
+}
+
+.vision-card:hover .vision-icon-box {
+  background: var(--red);
+  color: var(--white);
+  transform: scale(1.1);
+}
+
+.vision-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vision-tagline {
+  color: var(--soft-red);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.vision-card-body h3 {
+  margin: 0;
+  color: var(--white);
+  font-size: clamp(1.3rem, 1.8vw, 1.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.vision-card-body p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.legal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.legal-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 220px;
+  padding: 28px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  transition: transform 260ms ease, border-color 260ms ease, box-shadow 260ms ease;
+}
+
+.legal-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--red);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.06);
+}
+
+.legal-card-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(227, 27, 35, 0.08);
+  color: var(--red);
+  border: 1px solid rgba(227, 27, 35, 0.18);
+  margin-bottom: 20px;
+}
+
+.legal-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.08rem;
+  font-weight: 800;
+  line-height: 1.25;
+  text-transform: uppercase;
+  color: var(--charcoal);
+}
+
+.legal-card p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
 .support-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
+  gap: 20px;
 }
 
-.legal-grid article,
 .support-grid article {
   min-height: 180px;
   padding: 28px;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  background: var(--ivory);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 260ms ease, border-color 260ms ease;
 }
 
-.legal-grid svg,
+.support-grid article:hover {
+  transform: translateY(-4px);
+  border-color: var(--red);
+}
+
 .support-grid svg {
   color: var(--red);
 }
 
-.legal-grid p,
 .support-grid strong {
   display: block;
-  margin: 28px 0 0;
-  font-size: 1.16rem;
+  margin: 20px 0 0;
+  font-size: 1.12rem;
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.25;
   text-transform: uppercase;
+}
+
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(227, 27, 35, 0.09);
+  border: 1px solid rgba(227, 27, 35, 0.24);
+  color: var(--red);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.incubation-highlights {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  background: var(--ivory);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--red);
+}
+
+.highlight-item svg {
+  color: var(--red);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.highlight-item strong {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  margin-bottom: 4px;
+}
+
+.highlight-item span {
+  display: block;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--muted);
 }
 
 .recognition-panel {
@@ -645,6 +859,7 @@ p {
   margin: 0;
   min-height: 260px;
   overflow: hidden;
+  border-radius: 4px;
 }
 
 .incubation-image img {
@@ -654,30 +869,48 @@ p {
   object-fit: cover;
 }
 
-.recognition-panel > div,
-.security-mark {
-  display: grid;
-  gap: 8px;
-  padding: 28px;
+.recognition-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 24px;
   background: var(--black);
   color: var(--white);
   border-left: 4px solid var(--red);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 240ms ease, border-left-color 240ms ease;
 }
 
-.recognition-panel svg,
-.security-mark svg {
+.recognition-card:hover {
+  transform: translateX(4px);
+  border-left-color: var(--soft-red);
+}
+
+.recognition-card.primary {
+  background: linear-gradient(135deg, #111111 0%, #1c1c1c 100%);
+  border-left-width: 6px;
+}
+
+.recognition-card svg {
   color: var(--soft-red);
+  flex-shrink: 0;
 }
 
-.recognition-panel strong,
-.security-mark strong {
-  font-size: clamp(1.25rem, 2vw, 2rem);
+.recognition-card strong {
+  display: block;
+  font-size: clamp(1.02rem, 1.35vw, 1.22rem);
+  font-weight: 800;
   text-transform: uppercase;
+  line-height: 1.2;
 }
 
-.recognition-panel span,
-.security-mark span {
-  color: rgba(255, 255, 255, 0.68);
+.recognition-card span {
+  display: block;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 4px;
 }
 
 .problem-grid figure {
@@ -939,7 +1172,7 @@ p {
 
 .stat strong {
   display: block;
-  font-size: clamp(2.2rem, 5vw, 5rem);
+  font-size: clamp(1.8rem, 3.5vw, 3.8rem);
   line-height: 0.92;
 }
 
@@ -1237,73 +1470,7 @@ p {
   line-height: 1;
 }
 
-.security-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
-  gap: clamp(28px, 5vw, 78px);
-  align-items: stretch;
-}
 
-.security-copy {
-  padding-block: clamp(24px, 4vw, 54px);
-}
-
-.security-copy p {
-  max-width: 760px;
-}
-
-.security-points {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 34px;
-}
-
-.security-points span {
-  min-height: 122px;
-  display: flex;
-  align-items: flex-end;
-  padding: 16px;
-  border-top: 2px solid var(--red);
-  background: var(--white);
-  font-weight: 800;
-  line-height: 1.18;
-  text-transform: uppercase;
-}
-
-.security-card {
-  min-height: 430px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 16px;
-  padding: clamp(24px, 4vw, 46px);
-  background:
-    linear-gradient(180deg, rgba(8, 8, 8, 0.24), rgba(8, 8, 8, 0.92)),
-    url('/assets/blockchain-security.png') center / cover;
-  color: var(--white);
-  border-left: 5px solid var(--red);
-}
-
-.security-card svg {
-  color: var(--soft-red);
-}
-
-.security-card strong {
-  font-size: clamp(1.7rem, 3.2vw, 3.4rem);
-  line-height: 0.95;
-  text-transform: uppercase;
-}
-
-.security-card span,
-.security-card small {
-  max-width: 420px;
-  color: rgba(255, 255, 255, 0.78);
-}
-
-.security-card small {
-  font-size: 0.82rem;
-}
 
 .investment-grid {
   display: grid;
@@ -1350,6 +1517,7 @@ p {
   display: grid;
   align-items: center;
   overflow: hidden;
+  padding-block: clamp(100px, 12vw, 180px);
 }
 
 .final-cta > img {
@@ -1369,7 +1537,8 @@ p {
 }
 
 .final-cta h2 {
-  font-size: clamp(2.7rem, 7vw, 7.5rem);
+  font-size: clamp(2.2rem, 4.5vw, 5rem);
+  margin-bottom: 28px;
 }
 
 .contact form {
@@ -1590,17 +1759,13 @@ footer nav a:hover {
     grid-column: 1 / -1;
   }
 
-  .legal-grid,
-  .support-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .vision-grid {
     grid-template-columns: 1fr;
   }
 
-  .vision-grid article {
-    min-height: 180px;
+  .legal-grid,
+  .support-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -1623,7 +1788,7 @@ footer nav a:hover {
   }
 
   .hero h1 {
-    font-size: clamp(2.5rem, 11.2vw, 3.35rem);
+    font-size: clamp(2.2rem, 10vw, 3rem);
     line-height: 0.92;
     max-width: 100%;
   }
@@ -1665,9 +1830,10 @@ footer nav a:hover {
   }
 
   h2 {
-    font-size: clamp(2.25rem, 12vw, 3.6rem);
+    font-size: clamp(1.7rem, 8vw, 2.6rem);
   }
 
+  .vision-grid,
   .legal-grid,
   .support-grid,
   .journey-grid,
@@ -1678,8 +1844,19 @@ footer nav a:hover {
   .timeline,
   .investment-row,
   .advantage-grid,
+  .incubation-highlights,
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+
+  .vision-card {
+    min-height: auto;
+    padding: 26px 20px;
+  }
+
+  .legal-card {
+    min-height: auto;
+    padding: 22px 18px;
   }
 
   .advantage-card,
