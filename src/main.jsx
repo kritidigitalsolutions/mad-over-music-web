@@ -72,8 +72,7 @@ const navItems = [
   ['Vision', 'vision'],
   ['Features', 'features'],
   ['For Artists', 'artists'],
-  ['Franchise', 'franchise'],
-  ['Contact', 'contact']
+  ['Franchise', 'franchise']
 ];
 
 const mobileItems = [
@@ -1443,30 +1442,13 @@ function SupportEcosystem() {
             </p>
           </div>
 
-          <aside className="support-header-stpi-card" aria-label="STPI Government Incubation Partner">
-            <div className="stpi-card-badge-row">
-              <span className="stpi-badge-live"><span className="stpi-live-dot" /> MeitY Incubated</span>
-              <span className="stpi-badge-id">Official Backing</span>
-            </div>
-            <div className="stpi-card-content">
-              <div className="stpi-logo-container">
-                <img
-                  src={media.stpiLogo}
-                  alt="STPI - Software Technology Parks of India, Ministry of Electronics & IT"
-                  className="stpi-logo-img"
-                />
-              </div>
-              <div className="stpi-card-text">
-                <h4>Software Technology Parks of India</h4>
-                <p>Autonomous Society under Ministry of Electronics &amp; Information Technology (MeitY), Govt. of India</p>
-              </div>
-            </div>
-            <div className="stpi-card-footer">
-              <span className="stpi-foot-tag">
-                <span className="tag-dot" /> Govt. Digital Infrastructure &amp; Incubation Network
-              </span>
-            </div>
-          </aside>
+          <div className="support-header-logo-wrap">
+            <img
+              src={media.stpiLogo}
+              alt="STPI - Software Technology Parks of India, Ministry of Electronics & IT"
+              className="support-header-stpi-logo"
+            />
+          </div>
         </div>
 
         <div className="support-grid">
@@ -1725,44 +1707,47 @@ function Footer() {
     <footer>
       <div className="container footer-grid">
         <div className="footer-brand">
-          <img src={media.logoLight} alt="MAD OVER MUSIC logo" />
-          <p>A technology enabled ecosystem connecting talent discovery to music creation and monetization.</p>
-          <div className="footer-stpi-badge">
-            <img src={media.stpiLogo} alt="STPI Software Technology Parks of India" />
-            <div>
-              <small>Incubated Platform</small>
-              <strong>STPI · MeitY Govt. of India</strong>
+          <img src={media.logoLight} alt="MAD OVER MUSIC logo" className="footer-logo" />
+          <p className="footer-desc">
+            A technology enabled ecosystem connecting talent discovery to music creation and monetization.
+          </p>
+          <div className="footer-brand-actions">
+            <div className="footer-stpi-badge">
+              <img src={media.stpiLogo} alt="STPI Software Technology Parks of India" />
+              <div>
+                <small>Incubated Platform</small>
+                <strong>STPI · MeitY Govt. of India</strong>
+              </div>
             </div>
+            <a className="button button-red footer-cta-btn" href="#contact">
+              <span>Get in Touch</span>
+              <ArrowRight size={18} />
+            </a>
           </div>
-          <a className="button button-red" href="#contact">
-            <span>Get in Touch</span>
-            <ArrowRight size={18} />
-          </a>
         </div>
         <div className="footer-col">
-          <span>Explore</span>
+          <span className="footer-col-title">Explore</span>
           <nav aria-label="Footer navigation">
             {navItems.map(([label, id]) => (
               <a key={id} href={`#${id}`}>
                 {label}
               </a>
             ))}
+            <a href="#contact">Contact</a>
           </nav>
         </div>
         <div className="footer-col">
-          <span>Company</span>
-          <p>
-            Desi Tune Entertainment Pvt. Ltd.
-            <br />
-            CEO & Producer - Mr. Maninder Hooda
-          </p>
-          <p>© 2026 Desi Tune Entertainment Pvt. Ltd. All Rights Reserved.</p>
+          <span className="footer-col-title">Company</span>
+          <div className="footer-company-info">
+            <p className="company-name">
+              <strong>Desi Tune Entertainment Pvt. Ltd.</strong>
+              <span>CEO &amp; Producer - Mr. Maninder Hooda</span>
+            </p>
+            <p className="footer-copyright">
+              © 2026 Desi Tune Entertainment Pvt. Ltd. All Rights Reserved.
+            </p>
+          </div>
         </div>
-        <p>
-          Desi Tune Entertainment Pvt. Ltd.
-          <br />
-          © 2026 Desi Tune Entertainment Pvt. Ltd. All Rights Reserved.
-        </p>
       </div>
       <div className="footer-stroke" aria-hidden="true">MOM</div>
     </footer>

@@ -161,14 +161,29 @@ footer img {
 }
 
 .nav-cta {
-  min-height: 44px;
+  min-height: 42px;
   display: inline-flex;
   align-items: center;
-  padding: 0 18px;
-  border: 1px solid currentColor;
+  justify-content: center;
+  padding: 0 22px;
+  background: var(--red);
+  color: var(--white) !important;
+  border: 1px solid var(--red);
   font-size: 0.78rem;
   font-weight: 800;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 0;
+  box-shadow: 0 4px 14px rgba(227, 27, 35, 0.3);
+  transition: background 200ms ease, border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+
+.nav-cta:hover {
+  background: #c5141b;
+  border-color: #c5141b;
+  color: var(--white) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(227, 27, 35, 0.45);
 }
 
 .menu-button {
@@ -1227,6 +1242,12 @@ p {
   margin: 0;
 }
 
+.solution .section-heading h2 {
+  color: var(--red);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
 .premium-grid p,
 .ecosystem-layout p {
   font-size: 0.94rem;
@@ -2269,14 +2290,14 @@ p {
 .support-header-wrap {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  gap: clamp(24px, 3.5vw, 48px);
+  align-items: center;
+  gap: clamp(24px, 4vw, 56px);
   margin-bottom: clamp(36px, 5vw, 56px);
 }
 
 .support-header-left {
-  max-width: 680px;
-  flex: 1 1 520px;
+  max-width: 720px;
+  flex: 1 1 540px;
 }
 
 .support-header-left h2 {
@@ -2288,137 +2309,32 @@ p {
   margin-block: 10px 14px;
 }
 
-.support-header-stpi-card {
-  flex: 0 0 400px;
-  max-width: 440px;
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-left: 3px solid var(--red);
-  padding: 16px 20px;
-  border-radius: 0;
-  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.06);
-  transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
-}
-
-.support-header-stpi-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 28px -6px rgba(0, 0, 0, 0.1);
-  border-color: var(--line);
-  border-left-color: var(--red);
-}
-
-.stpi-card-badge-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.stpi-badge-live {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.68rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--red);
-  background: rgba(227, 27, 35, 0.08);
-  border: 1px solid rgba(227, 27, 35, 0.18);
-  padding: 3px 8px;
-  border-radius: 0;
-}
-
-.stpi-live-dot {
-  width: 6px;
-  height: 6px;
-  background: var(--red);
-  border-radius: 50%;
-  box-shadow: 0 0 6px rgba(227, 27, 35, 0.8);
-  animation: pulseDot 2s infinite;
-}
-
-.stpi-badge-id {
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-  text-transform: uppercase;
-}
-
-.stpi-card-content {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.stpi-logo-container {
-  width: 72px;
-  height: 72px;
-  min-width: 72px;
-  background: #ffffff;
-  border: 1px solid var(--line);
-  display: grid;
-  place-items: center;
-  padding: 6px;
-  border-radius: 0;
-}
-
-.stpi-logo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-.stpi-card-text h4 {
-  margin: 0 0 4px;
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: var(--charcoal);
-  line-height: 1.25;
-  text-transform: uppercase;
-  letter-spacing: -0.01em;
-}
-
-.stpi-card-text p {
-  margin: 0;
-  font-size: 0.78rem;
-  line-height: 1.4;
-  color: var(--muted);
-}
-
-.stpi-card-footer {
-  margin-top: 12px;
-  padding-top: 8px;
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.stpi-foot-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--charcoal);
-}
-
-.stpi-foot-tag .tag-dot {
-  width: 5px;
-  height: 5px;
-  background: var(--red);
-  border-radius: 0;
-}
-
 .support-sub {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--muted);
   margin: 0;
+}
+
+.support-header-logo-wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 8px 12px;
+}
+
+.support-header-stpi-logo {
+  height: clamp(110px, 12vw, 155px);
+  width: auto;
+  max-width: 300px;
+  object-fit: contain;
+  display: block;
+  transition: transform 260ms ease, filter 260ms ease;
+}
+
+.support-header-stpi-logo:hover {
+  transform: scale(1.05);
 }
 
 /* 3 columns top row, 2 columns bottom row */
@@ -3016,71 +2932,91 @@ footer {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1.25fr 0.75fr 1fr;
-  gap: clamp(28px, 5vw, 86px);
+  grid-template-columns: 1.4fr 0.75fr 1fr;
+  gap: clamp(28px, 5vw, 72px);
   align-items: start;
   padding-bottom: clamp(42px, 6vw, 90px);
   border-top: 1px solid var(--light-line);
-  padding-top: 34px;
+  padding-top: 48px;
 }
 
-footer img {
-  width: 220px;
-  margin-bottom: 24px;
+.footer-logo {
+  width: 190px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.footer-desc {
+  max-width: 440px;
+  margin: 0 0 24px 0;
+  font-size: clamp(0.95rem, 1.2vw, 1.06rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.footer-brand-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
 }
 
 .footer-stpi-badge {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 10px 16px;
+  padding: 8px 16px;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  margin-bottom: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  margin-bottom: 0;
   border-radius: 0;
+  min-height: 48px;
+  box-sizing: border-box;
 }
 
 .footer-stpi-badge img {
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   object-fit: contain;
   background: #ffffff;
   padding: 3px;
   margin-bottom: 0;
+  border-radius: 0;
 }
 
 .footer-stpi-badge small {
   display: block;
-  color: rgba(255, 255, 255, 0.55);
-  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.66rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .footer-stpi-badge strong {
   display: block;
   color: #ffffff;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   letter-spacing: 0.02em;
+  line-height: 1.2;
+  margin-top: 2px;
 }
 
-footer p,
-footer a {
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.95rem;
+.footer-cta-btn {
+  min-height: 48px;
+  padding: 0 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 0;
 }
 
-.footer-brand p {
-  max-width: 460px;
-  margin-bottom: 24px;
-  font-size: clamp(1rem, 1.4vw, 1.18rem);
-}
-
-.footer-col > span {
+.footer-col-title {
   display: block;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   color: var(--soft-red);
-  font-size: 0.75rem;
+  font-size: 0.76rem;
   font-weight: 800;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -3093,16 +3029,47 @@ footer nav {
 
 footer nav a {
   width: fit-content;
-  font-weight: 800;
+  font-weight: 700;
+  font-size: 0.88rem;
   text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.72);
+  transition: color 180ms ease, transform 180ms ease;
 }
 
 footer nav a:hover {
   color: var(--white);
+  transform: translateX(3px);
 }
 
-.footer-grid > p {
-  display: none;
+.footer-company-info {
+  display: grid;
+  gap: 16px;
+}
+
+.footer-company-info .company-name {
+  margin: 0;
+}
+
+.footer-company-info .company-name strong {
+  display: block;
+  color: #ffffff;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.footer-company-info .company-name span {
+  display: block;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.footer-copyright {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  margin: 0;
 }
 
 .footer-stroke {
@@ -3312,15 +3279,18 @@ footer nav a:hover {
   }
 
   .support-header-wrap {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     gap: 24px;
   }
 
-  .support-header-stpi-card {
-    flex: none;
-    width: 100%;
-    max-width: 100%;
+  .support-header-logo-wrap {
+    padding: 0;
+  }
+
+  .support-header-stpi-logo {
+    height: clamp(85px, 9vw, 120px);
   }
 }
 
@@ -3406,6 +3376,19 @@ footer nav a:hover {
   .incubation-highlights,
   .footer-grid {
     grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer-brand-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .footer-stpi-badge,
+  .footer-cta-btn {
+    width: 100%;
+    justify-content: center;
   }
 
   .journey-phase-tabs {
