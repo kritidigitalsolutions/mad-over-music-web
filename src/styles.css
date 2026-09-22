@@ -1224,10 +1224,10 @@ p {
 
 .journey-grid h3 {
   font-size: 1.05rem;
-  font-weight: 800;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: -0.01em;
-  color: var(--black);
+  letter-spacing: 0.02em;
+  color: var(--red);
   margin: 0 0 12px 0;
   height: 28px;
   display: flex;
@@ -1240,12 +1240,6 @@ p {
   line-height: 1.5;
   color: var(--muted);
   margin: 0;
-}
-
-.solution .section-heading h2 {
-  color: var(--red);
-  font-weight: 700;
-  letter-spacing: -0.01em;
 }
 
 .premium-grid p,
