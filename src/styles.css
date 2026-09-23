@@ -845,7 +845,7 @@ p {
 }
 
 .legal-card-body h3 {
-  color: var(--black);
+  color: var(--red);
   font-size: 1.12rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -1513,7 +1513,7 @@ p {
 }
 
 .step-card-body h3 {
-  color: var(--black);
+  color: var(--red);
   font-size: 1.12rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -2438,7 +2438,7 @@ p {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: -0.01em;
-  color: var(--charcoal);
+  color: var(--red);
   line-height: 1.25;
 }
 
@@ -2950,51 +2950,77 @@ footer {
 
 .footer-brand-actions {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 16px;
 }
 
 .footer-stpi-badge {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  gap: 14px;
+  padding: 12px 18px;
+  background: linear-gradient(135deg, rgba(227, 27, 35, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
+  border: 1px solid rgba(227, 27, 35, 0.42);
+  border-left: 3px solid var(--red);
   margin-bottom: 0;
   border-radius: 0;
-  min-height: 48px;
   box-sizing: border-box;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), 0 0 16px rgba(227, 27, 35, 0.12);
+  transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
+}
+
+.footer-stpi-badge:hover {
+  transform: translateY(-2px);
+  border-color: var(--red);
+  box-shadow: 0 6px 24px rgba(227, 27, 35, 0.25);
 }
 
 .footer-stpi-badge img {
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   object-fit: contain;
   background: #ffffff;
-  padding: 3px;
+  padding: 5px;
   margin-bottom: 0;
-  border-radius: 0;
+  border-radius: 2px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
-.footer-stpi-badge small {
-  display: block;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.66rem;
+.footer-stpi-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.footer-stpi-tag {
+  display: inline-flex;
+  align-items: center;
+  color: var(--soft-red);
+  font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 700;
+  letter-spacing: 0.1em;
+  font-weight: 800;
   line-height: 1.2;
 }
 
-.footer-stpi-badge strong {
+.footer-stpi-title {
   display: block;
   color: #ffffff;
-  font-size: 0.82rem;
-  letter-spacing: 0.02em;
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+}
+
+.footer-stpi-sub {
+  display: block;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.76rem;
+  font-weight: 600;
   line-height: 1.2;
-  margin-top: 2px;
+  letter-spacing: 0.02em;
 }
 
 .footer-cta-btn {

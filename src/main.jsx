@@ -747,7 +747,7 @@ function Incubation() {
               <img src={media.stpiLogo} alt="Software Technology Parks of India Logo" />
             </div>
             <div>
-              <strong>STPI Incubated Platform</strong>
+              <strong>STPI (Software Technology Parks of India) Incubated Platform</strong>
               <span>Ministry of Electronics & IT (MeitY), Govt. of India</span>
             </div>
           </div>
@@ -1713,10 +1713,11 @@ function Footer() {
           </p>
           <div className="footer-brand-actions">
             <div className="footer-stpi-badge">
-              <img src={media.stpiLogo} alt="STPI Software Technology Parks of India" />
-              <div>
-                <small>Incubated Platform</small>
-                <strong>STPI · MeitY Govt. of India</strong>
+              <img src={media.stpiLogo} alt="STPI - Software Technology Parks of India" />
+              <div className="footer-stpi-info">
+                <span className="footer-stpi-tag">Incubated Platform</span>
+                <strong className="footer-stpi-title">STPI (Software Technology Parks of India)</strong>
+                <span className="footer-stpi-sub">MeitY · Govt. of India</span>
               </div>
             </div>
             <a className="button button-red footer-cta-btn" href="#contact">
