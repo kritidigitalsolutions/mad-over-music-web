@@ -508,7 +508,7 @@ p {
 .premium,
 .revenue,
 .roadmap {
-  padding-block: clamp(80px, 10vw, 150px);
+  padding-block: clamp(64px, 8vw, 100px);
 }
 
 .contact {
@@ -587,7 +587,7 @@ p {
 .support,
 .security,
 .investment {
-  padding-block: clamp(80px, 10vw, 150px);
+  padding-block: clamp(64px, 8vw, 100px);
 }
 
 .vision-line,
@@ -736,7 +736,7 @@ p {
 .legal {
   position: relative;
   background: var(--white);
-  padding: clamp(80px, 8vw, 120px) 0;
+  padding: clamp(56px, 6vw, 90px) 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
@@ -1404,7 +1404,7 @@ p {
 .artist-journey {
   position: relative;
   background: var(--white);
-  padding: clamp(80px, 8vw, 120px) 0;
+  padding: clamp(56px, 6vw, 90px) 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
@@ -1900,7 +1900,7 @@ p {
               radial-gradient(circle at 90% 85%, rgba(227, 27, 35, 0.05) 0%, transparent 50%),
               #080808;
   color: var(--white);
-  padding-block: clamp(80px, 9vw, 130px);
+  padding-block: clamp(56px, 7vw, 96px);
 }
 
 /* Hero Split: Left Intro + Right Revenue Card */
@@ -2279,7 +2279,7 @@ p {
 .support {
   position: relative;
   background: var(--ivory);
-  padding-block: clamp(80px, 9vw, 130px);
+  padding-block: clamp(56px, 7vw, 96px);
   border-bottom: 1px solid var(--line);
 }
 
@@ -2488,7 +2488,7 @@ p {
 .investment {
   position: relative;
   overflow: hidden;
-  padding-block: clamp(80px, 9vw, 130px);
+  padding-block: clamp(56px, 7vw, 96px);
   background: radial-gradient(circle at 85% 20%, rgba(227, 27, 35, 0.08) 0%, transparent 55%),
               radial-gradient(circle at 10% 80%, rgba(227, 27, 35, 0.06) 0%, transparent 50%),
               #0c0c0c;
@@ -2852,7 +2852,7 @@ p {
   display: grid;
   align-items: center;
   overflow: hidden;
-  padding-block: clamp(100px, 12vw, 180px);
+  padding-block: clamp(72px, 8vw, 120px);
 }
 
 .final-cta > img {
@@ -3750,7 +3750,7 @@ footer nav a:hover {
 /* ========================================================== */
 
 .credentials {
-  padding: 100px 0;
+  padding: 64px 0;
   overflow: hidden;
 }
 
