@@ -76,12 +76,13 @@ app.post('/api/contact', async (req, res) => {
 const distPath = path.resolve(__dirname, '../dist');
 app.use(express.static(distPath));
 
-app.get('*', (req, res, next) => {
-  if (req.path.startsWith('/api/')) return next();
+// Use regex or app.use for catch-all in Express 5
+app.get(/^(?!\/api).*/, (req, res, next) => {
   res.sendFile(path.join(distPath, 'index.html'), (err) => {
     if (err) next();
   });
 });
+
 
 app.listen(PORT, () => {
   console.log(`🚀 Mad Over Music Email Server running on port ${PORT}`);
