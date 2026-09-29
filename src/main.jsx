@@ -21,6 +21,7 @@ import {
   LockKeyhole,
   MapPin,
   Menu,
+  Maximize,
   Mic2,
   Network,
   Play,
@@ -36,7 +37,14 @@ import {
   X,
   Zap,
   CheckCircle2,
-  Award
+  Award,
+  Mail,
+  Phone,
+  Send,
+  Loader2,
+  Clock,
+  ShieldAlert,
+  AlertCircle
 } from 'lucide-react';
 import './styles.css';
 
@@ -386,6 +394,7 @@ function App() {
         <GrowthRoadmap />
         <FranchiseSection />
         <LegalFoundation />
+        <CompanyCredentials />
         <SupportEcosystem />
         <InvestmentSection />
         <FinalCTA />
@@ -699,6 +708,102 @@ function LegalFoundation() {
           </div>
         </div>
       </div>
+    </section>
+  );
+}
+
+function CompanyCredentials() {
+  const [selectedCert, setSelectedCert] = useState(null);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (selectedCert) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [selectedCert]);
+
+  return (
+    <section className="credentials section-ivory" id="credentials">
+      <div className="container credentials-container">
+        <div className="credentials-left" data-reveal>
+          <p className="eyebrow">Credentials</p>
+          <h2>BUILT ON TRUST.<br/>BUILT FOR THE FUTURE.</h2>
+          <p className="credentials-desc">
+            MAD OVER MUSIC operates under Desi Tunes Entertainment Pvt. Ltd., with recognised registrations and formal business credentials supporting the platform's foundation.
+          </p>
+          
+          <div className="credentials-strip">
+            <div className="cred-strip-line"></div>
+            <div>
+              <p className="cred-company">DESI TUNES ENTERTAINMENT PRIVATE LIMITED</p>
+              <p className="cred-gov">STPI &middot; MeitY &middot; Government of India</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="credentials-right">
+          {/* Certificate 01 */}
+          <div 
+            className="cert-wrapper cert-front"
+            onClick={() => setSelectedCert({ src: '/CERTIFICATE FRONT.PNG', alt: 'Desi Tunes Entertainment Private Limited Udyam Registration Certificate' })}
+            data-reveal
+          >
+            <div className="cert-image-box">
+              <img src="/CERTIFICATE FRONT.PNG" alt="Udyam Registration Certificate" />
+              <div className="cert-hover-overlay">
+                <span className="cert-view-btn"><Maximize size={16} /> View Document</span>
+              </div>
+            </div>
+            <div className="cert-label-box">
+              <span className="cert-num">01</span>
+              <div>
+                <strong>UDYAM REGISTRATION</strong>
+                <span>Official Business Registration</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Certificate 02 */}
+          <div 
+            className="cert-wrapper cert-back"
+            onClick={() => setSelectedCert({ src: '/CERTIFICATE BACK.png', alt: 'Desi Tunes Entertainment Private Limited Certificate of Incorporation' })}
+            data-reveal
+          >
+            <div className="cert-image-box">
+              <img src="/CERTIFICATE BACK.png" alt="Certificate of Incorporation" />
+              <div className="cert-hover-overlay">
+                <span className="cert-view-btn"><Maximize size={16} /> View Document</span>
+              </div>
+            </div>
+            <div className="cert-label-box">
+              <span className="cert-num">02</span>
+              <div>
+                <strong>CERTIFICATE OF INCORPORATION</strong>
+                <span>Company Incorporation Document</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Lightbox Modal */}
+      {selectedCert && (
+        <div className="cert-modal-backdrop" onClick={() => setSelectedCert(null)}>
+          <div className="cert-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="cert-modal-close" onClick={() => setSelectedCert(null)} aria-label="Close document viewer">
+              <X size={24} />
+            </button>
+            <div className="cert-modal-image-wrapper">
+              <img src={selectedCert.src} alt={selectedCert.alt} />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
@@ -1651,51 +1756,217 @@ function FinalCTA() {
 }
 
 function ContactSection() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    interest: '',
+    customInterest: '',
+    message: ''
+  });
+
+  const [status, setStatus] = useState({ state: 'idle', message: '' });
+
+  const isOther = formData.interest === 'Other';
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleInterestChange = (e) => {
+    const value = e.target.value;
+    setFormData((prev) => ({
+      ...prev,
+      interest: value,
+      customInterest: value === 'Other' ? prev.customInterest : ''
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setStatus({ state: 'error', message: 'Please fill in all required fields.' });
+      return;
+    }
+
+    if (isOther && !formData.customInterest.trim()) {
+      setStatus({ state: 'error', message: 'Please specify your interest topic.' });
+      return;
+    }
+
+    // Instant Optimistic UI Update
+    setStatus({
+      state: 'success',
+      message: 'Thank you for reaching out! We have received your details and our team will connect with you within 24 hours.'
+    });
+
+    // Run API call concurrently in the background (fire-and-forget)
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone.trim(),
+        interest: formData.interest || 'General Inquiry',
+        customInterest: formData.customInterest.trim(),
+        message: formData.message.trim()
+      })
+    }).catch(err => {
+      console.error('Background API Contact Error:', err);
+    });
+
+    // Clear form instantly
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      interest: '',
+      customInterest: '',
+      message: ''
+    });
+  };
+
   return (
     <section className="contact section-ivory" id="contact">
       <div className="container contact-grid">
-        <div data-reveal>
+        <div data-reveal className="contact-left-col">
           <p className="eyebrow">Contact</p>
           <h2>Let's build together.</h2>
-          <p>
+          <p className="contact-desc">
             Send an enquiry for artist opportunities, franchise opportunities, partnerships, business collaboration or
             general questions.
           </p>
+
+          <div className="contact-cards">
+            <a href="mailto:contact@madovermusic.com" className="contact-card">
+              <div className="contact-card-icon">
+                <Mail size={20} />
+              </div>
+              <div className="contact-card-info">
+                <span className="contact-card-label">Direct Email</span>
+                <strong>contact@madovermusic.com</strong>
+                <small>Official Inquiries &amp; Artist Submissions</small>
+              </div>
+            </a>
+
+            <div className="contact-card">
+              <div className="contact-card-icon">
+                <Building2 size={20} />
+              </div>
+              <div className="contact-card-info">
+                <span className="contact-card-label">Incubation Hub</span>
+                <strong>STPI · MeitY, Govt. of India</strong>
+                <small>A Venture of Desi Tune Entertainment</small>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <form data-reveal>
+        <form className="right-contact-container" onSubmit={handleSubmit} data-reveal>
+          <div className="form-fields-grid">
           <label>
             Name
-            <input type="text" name="name" autoComplete="name" />
+            <input
+              type="text"
+              name="name"
+              autoComplete="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
           </label>
           <label>
             Email
-            <input type="email" name="email" autoComplete="email" />
+            <input
+              type="email"
+              name="email"
+              autoComplete="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
           </label>
           <label>
             Phone
-            <input type="tel" name="phone" autoComplete="tel" />
+            <input
+              type="tel"
+              name="phone"
+              autoComplete="tel"
+              value={formData.phone}
+              onChange={handleChange}
+            />
           </label>
           <label>
             I'm Interested In
-            <select name="interest" defaultValue="">
+            <select
+              name="interest"
+              value={formData.interest}
+              onChange={handleInterestChange}
+            >
               <option value="" disabled>
                 Select an option
               </option>
-              <option>Artist Opportunity</option>
-              <option>Franchise Opportunity</option>
-              <option>Partnership</option>
-              <option>Business / Collaboration</option>
-              <option>General Inquiry</option>
+              <option value="Artist Opportunity">Artist Opportunity</option>
+              <option value="Franchise Opportunity">Franchise Opportunity</option>
+              <option value="Partnership">Partnership</option>
+              <option value="Business / Collaboration">Business / Collaboration</option>
+              <option value="General Inquiry">General Inquiry</option>
+              <option value="Other">Other</option>
             </select>
           </label>
+
+          {isOther && (
+            <label className="full">
+              Specify Interest
+              <input
+                type="text"
+                name="customInterest"
+                placeholder="Type your requirement / interest..."
+                value={formData.customInterest}
+                onChange={handleChange}
+                autoFocus
+                required
+              />
+            </label>
+          )}
+          </div>
+
           <label className="full">
             Message
-            <textarea name="message" rows="5" />
+            <textarea
+              name="message"
+              rows={5}
+              value={formData.message}
+              onChange={handleChange}
+              required
+            />
           </label>
-          <button className="button button-red" type="submit">
-            <span>Send Enquiry</span>
-            <ArrowRight size={18} />
-          </button>
+
+          {status.state === 'success' && (
+            <div className="form-feedback success full">
+              <CheckCircle2 size={18} />
+              <span>{status.message}</span>
+            </div>
+          )}
+
+          {status.state === 'error' && (
+            <div className="form-feedback error full">
+              <AlertCircle size={18} />
+              <span>{status.message}</span>
+            </div>
+          )}
+
+          <div className="submit-btn-wrapper">
+            <button className="button button-red submit-btn" type="submit" disabled={status.state === 'loading'}>
+              <span>{status.state === 'loading' ? 'Sending...' : 'Send Enquiry'}</span>
+              <ArrowRight size={18} />
+            </button>
+          </div>
         </form>
       </div>
     </section>
