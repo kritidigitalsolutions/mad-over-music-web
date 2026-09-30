@@ -427,25 +427,27 @@ function Navbar() {
   }, [open]);
 
   return (
-    <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
-      <a className="logo-link" href="#home" aria-label="MAD OVER MUSIC home">
-        <img src={scrolled ? media.logoDark : media.logoLight} alt="MAD OVER MUSIC logo" />
-      </a>
-      <nav className="desktop-nav" aria-label="Primary navigation">
-        {navItems.map(([label, id]) => (
-          <a key={id} href={`#${id}`}>
-            {label}
-          </a>
-        ))}
-      </nav>
-      <a className="nav-cta desktop-cta" href="#contact">
-        Get in Touch
-      </a>
-      <button className="menu-button" type="button" aria-label="Open navigation menu" onClick={() => setOpen(true)}>
-        <Menu size={24} />
-      </button>
+    <>
+      <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
+        <a className="logo-link" href="#home" aria-label="MAD OVER MUSIC home">
+          <img src={scrolled ? media.logoDark : media.logoLight} alt="MAD OVER MUSIC logo" />
+        </a>
+        <nav className="desktop-nav" aria-label="Primary navigation">
+          {navItems.map(([label, id]) => (
+            <a key={id} href={`#${id}`}>
+              {label}
+            </a>
+          ))}
+        </nav>
+        <a className="nav-cta desktop-cta" href="#contact">
+          Get in Touch
+        </a>
+        <button className="menu-button" type="button" aria-label="Open navigation menu" onClick={() => setOpen(true)}>
+          <Menu size={24} />
+        </button>
+      </header>
       <MobileMenu open={open} onClose={() => setOpen(false)} />
-    </header>
+    </>
   );
 }
 

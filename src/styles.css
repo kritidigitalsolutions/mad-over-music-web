@@ -121,7 +121,7 @@ button {
 
 .logo-link img,
 .mobile-menu-top img,
-footer img {
+.footer-logo {
   width: 100%;
   height: auto;
   object-fit: contain;
@@ -206,13 +206,17 @@ footer img {
   padding: 20px;
   background: var(--black);
   color: var(--white);
-  clip-path: inset(0 0 100% 0);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
   pointer-events: none;
-  transition: clip-path 480ms cubic-bezier(0.76, 0, 0.24, 1);
+  transition: opacity 480ms ease, visibility 480ms ease, transform 480ms cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 .mobile-menu.active {
-  clip-path: inset(0);
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
   pointer-events: auto;
 }
 
@@ -3383,13 +3387,13 @@ footer nav a:hover {
   .hero-image {
     margin: 0;
     min-height: auto;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 1 / 1;
   }
 
   .hero-image img {
     min-height: 0;
     height: 100%;
-    object-position: 70% center;
+    object-position: right center;
   }
 
   .brand-strip {
@@ -3715,7 +3719,7 @@ footer nav a:hover {
   }
 
   .final-cta {
-    min-height: 760px;
+    min-height: 480px;
     align-items: end;
     padding-bottom: 48px;
   }
