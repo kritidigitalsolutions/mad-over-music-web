@@ -204,12 +204,14 @@ button {
   flex-direction: column;
   gap: 28px;
   padding: 20px;
+  padding-bottom: 40px;
   background: var(--black);
   color: var(--white);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-20px);
   pointer-events: none;
+  overflow-y: auto;
   transition: opacity 480ms ease, visibility 480ms ease, transform 480ms cubic-bezier(0.76, 0, 0.24, 1);
 }
 
